@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    
+}
+.headertext {
+    padding-top: 50px;
+    text-align: center;
+    flex: auto;
+}
+.image {
+    height: 100px;
+    width: auto;
+}
+.line {
+    height: 5px;
+    width: 105%;
+    background-color: black;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+<body>
+    <% data.forEach(element=>{%>
+        <pre><%= element.name %>,,<%=element.day%>/<%=element.month%></pre>
+        <a class="delete" data-doc="<%=element._id%>">delete</a>
+        <a href="/replace/<%=element._id%>">replace</a>
+    <%}) %>
+    <script>
+        const del = document.querySelector('.delete')
+        del.addEventListener('click',(e)=>{
+            const end = `/delete/${del.dataset.doc}`
+            fetch(end,{method:'DELETE'}).then(()=>{
+                console.log('hehe')
+            })
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <title>all birthdays</title>
+    </head>
+    <body>
+        <% data.forEach(element => {%>
+            <pre><%= element.name%>:   <%= element.day %>/<%= element.month %></pre>
+        <%});%>
+    </body>

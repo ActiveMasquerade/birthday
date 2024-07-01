@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace</title>
+</head>
+<body>
+    Replace an added document
+    <form style="margin: 20px;" id="replaceForm">
+
+        <label for="name">Enter the name</label>
+        <input type="text" name="name" id="name" required>
+        <label for="month">Enter your birth-month</label>
+        <input type="text" id="month" name="month" required>
+        <label for="day">Enter day</label>
+        <input type="text" id="day" name="day" required>
+        <button type="submit" class="sub">Replace</button>
+    </form>
+    <p class="mess"></p>
+    <script>
+        const form = document.getElementById('replaceForm');
+        const nameInput = document.getElementById('name');
+        const monthInput = document.getElementById('month');
+        const dayInput = document.getElementById('day');
+        const id = '<%= id %>';
+        const mess = document.querySelector('.mess')
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const data = {
+                _id: id,
+                name: nameInput.value,
+                month: monthInput.value,
+                day: dayInput.value
+            };
+
+            console.log('Data to be sent:', data); // Debugging: Check the data
+
+            fetch(`/replace/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8'
+                }
+            }).then(response => response.json())
+              .then(data => {
+                console.log('Success:', data);
+                mess.innerText = 'data updated successfully!!!!!'
+                
+              }).catch((error) => {
+                console.error('Error:', error);
+              });
+        });
+    </script>
+</body>
+</html>
